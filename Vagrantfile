@@ -82,23 +82,5 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
-    apt-get update
-    apt-get upgrade -y
-    apt-get install -y apache2 postgresql postgresql-contrib vim git libpq-dev build-essential virtualbox-guest-dkms
-    if [ ! -d /srv/apps ]; then
-      mkdir /srv/apps
-      chmod 775 /srv/apps -R
-    fi
-    if [ ! -d /srv/www ]; then
-      mkdir /srv/www
-      chmod 775 /srv/www -R
-    fi
-    if [ ! -d /mnt/datafiles ]; then
-      mkdir /mnt/datafiles
-      chmod 775 /mnt/datafiles -R
-    fi
-    groupadd www-data
-    usermod -a -G www-data ubuntu
-  SHELL
+  config.vm.provision :shell, path: "bootstrap.sh"
 end
