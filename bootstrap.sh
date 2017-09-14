@@ -1,7 +1,7 @@
 #!/bin/bash
 apt-get update -y
 apt-get upgrade -y
-apt-get install -y python nginx postgresql postgresql-contrib vim git libpq-dev build-essential virtualbox-guest-dkms
+apt-get install -y python nginx postgresql postgresql-contrib vim git libpq-dev libssl-dev build-essential virtualbox-guest-dkms
 
 # install nvm - as current user
 # if running as root should repeat this as developer/service user
